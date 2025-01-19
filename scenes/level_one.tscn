@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://cdoanjp47bj73"]
+
+[ext_resource type="PackedScene" uid="uid://b2b2tmgto1dn" path="res://scenes/player.tscn" id="1_td53a"]
+[ext_resource type="PackedScene" uid="uid://bx3wnlsmgltx" path="res://scenes/ground.tscn" id="2_6shuf"]
+[ext_resource type="PackedScene" uid="uid://ctd8iyu53nn4p" path="res://scenes/background.tscn" id="3_05p4m"]
+[ext_resource type="PackedScene" uid="uid://6o55i8gc5jio" path="res://scenes/crate.tscn" id="3_al3xw"]
+[ext_resource type="PackedScene" uid="uid://dpl524wntkvyn" path="res://scenes/gui.tscn" id="5_6nduk"]
+[ext_resource type="PackedScene" uid="uid://uujnypq7ld2r" path="res://scenes/diamond.tscn" id="5_vu505"]
+[ext_resource type="PackedScene" uid="uid://cwjvnnmgdmdm0" path="res://scenes/coin.tscn" id="6_fkbif"]
+[ext_resource type="PackedScene" uid="uid://b5qxoco1f6330" path="res://scenes/flag.tscn" id="7_rh2ra"]
+[ext_resource type="PackedScene" uid="uid://bhyy2ohjw0gk5" path="res://scenes/spike.tscn" id="8_hc6ro"]
+
+[node name="level_one" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_td53a")]
+position = Vector2(115, 688)
+collision_mask = 50
+
+[node name="Ground" parent="." instance=ExtResource("2_6shuf")]
+
+[node name="Background" parent="." instance=ExtResource("3_05p4m")]
+
+[node name="GUI" parent="." instance=ExtResource("5_6nduk")]
+
+[node name="crates" type="Node2D" parent="."]
+
+[node name="crate" parent="crates" instance=ExtResource("3_al3xw")]
+position = Vector2(134, 432)
+
+[node name="crate2" parent="crates" instance=ExtResource("3_al3xw")]
+position = Vector2(218, 199)
+
+[node name="crate3" parent="crates" instance=ExtResource("3_al3xw")]
+position = Vector2(218, 244)
+
+[node name="diamond" parent="." instance=ExtResource("5_vu505")]
+position = Vector2(1386, 400)
+
+[node name="coins" type="Node2D" parent="."]
+
+[node name="coin" parent="coins" instance=ExtResource("6_fkbif")]
+position = Vector2(636, 156)
+
+[node name="coin2" parent="coins" instance=ExtResource("6_fkbif")]
+position = Vector2(258, 172)
+
+[node name="flag" parent="." instance=ExtResource("7_rh2ra")]
+position = Vector2(586, 390)
+
+[node name="spikes" type="Node2D" parent="."]
+position = Vector2(1678, -75)
+
+[node name="spike" parent="spikes" instance=ExtResource("8_hc6ro")]
+position = Vector2(-1167, 839)
+
+[node name="spike2" parent="spikes" instance=ExtResource("8_hc6ro")]
+position = Vector2(-487, 776)
+
+[node name="spike3" parent="spikes" instance=ExtResource("8_hc6ro")]
+position = Vector2(-440, 490)
+
+[node name="spike4" parent="spikes" instance=ExtResource("8_hc6ro")]
+position = Vector2(-1458, 473)

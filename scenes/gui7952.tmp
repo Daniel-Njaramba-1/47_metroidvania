@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpl524wntkvyn"]
+
+[ext_resource type="Script" path="res://scripts/gui.gd" id="1_dlfb8"]
+[ext_resource type="Texture2D" uid="uid://bdkdif0m400c4" path="res://art/Sprites/UI/HeartSpriteSheet.png" id="2_qi1l0"]
+[ext_resource type="Texture2D" uid="uid://dfwu43g00ndu0" path="res://art/Sprites/Interactables/coin.png" id="3_7hwoy"]
+[ext_resource type="Texture2D" uid="uid://cjcpq7dpf10ka" path="res://art/Sprites/Interactables/blue_diamond.png" id="4_d67oi"]
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource("1_dlfb8")
+
+[node name="heart" type="Sprite2D" parent="."]
+position = Vector2(19, 13)
+texture = ExtResource("2_qi1l0")
+hframes = 5
+
+[node name="coin_tracker" type="Sprite2D" parent="."]
+position = Vector2(21, 40)
+texture = ExtResource("3_7hwoy")
+hframes = 12
+
+[node name="coin_number" type="Label" parent="."]
+offset_left = 43.0
+offset_top = 28.0
+offset_right = 83.0
+offset_bottom = 51.0
+text = "0"
+
+[node name="diamond_tracker" type="Sprite2D" parent="."]
+position = Vector2(20, 74)
+texture = ExtResource("4_d67oi")
+
+[node name="diamond_number" type="Label" parent="."]
+offset_left = 44.0
+offset_top = 63.0
+offset_right = 84.0
+offset_bottom = 86.0
+text = "0"
+
+[node name="time_tracker" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 98.0
+offset_right = 43.0
+offset_bottom = 121.0
+text = "Time"
+
+[node name="time_number" type="Label" parent="."]
+offset_left = 51.0
+offset_top = 100.0
+offset_right = 92.0
+offset_bottom = 123.0
+text = "0 : 00"

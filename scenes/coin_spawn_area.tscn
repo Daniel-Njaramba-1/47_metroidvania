@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://btsjn2bccsbre"]
+
+[ext_resource type="Script" path="res://scripts/coin_spawn_area.gd" id="1_aigmj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlby3"]
+size = Vector2(642, 113)
+
+[node name="coin_spawn_area" type="Area2D"]
+position = Vector2(331, 67)
+script = ExtResource("1_aigmj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 8)
+shape = SubResource("RectangleShape2D_nlby3")

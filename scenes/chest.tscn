@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://besrk7cfhkik4"]
+
+[ext_resource type="Texture2D" uid="uid://twrx4rkkl1ws" path="res://art/Sprites/Interactables/chest-sheet.png" id="1_oddu2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ecc8k"]
+size = Vector2(28, 21.25)
+
+[sub_resource type="Animation" id="Animation_tsfiw"]
+resource_name = "Closed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_jpqpj"]
+resource_name = "Opened"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_udop2"]
+_data = {
+"Closed": SubResource("Animation_tsfiw"),
+"Opened": SubResource("Animation_jpqpj")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_42lk3"]
+size = Vector2(41, 29.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mwe6h"]
+
+[node name="chest" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.625)
+shape = SubResource("RectangleShape2D_ecc8k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+texture = ExtResource("1_oddu2")
+hframes = 2
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_udop2")
+}
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0.5, 2.75)
+shape = SubResource("RectangleShape2D_42lk3")
+
+[node name="diamond_spawn_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="diamond_spawn_area"]
+position = Vector2(1, -25)
+shape = SubResource("RectangleShape2D_mwe6h")

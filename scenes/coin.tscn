@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3 uid="uid://cwjvnnmgdmdm0"]
+
+[ext_resource type="Texture2D" uid="uid://dfwu43g00ndu0" path="res://art/Sprites/Interactables/coin.png" id="1_bgw4k"]
+[ext_resource type="Script" path="res://scripts/coin.gd" id="1_f710r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ifcy5"]
+
+[sub_resource type="Animation" id="Animation_fjhq0"]
+resource_name = "Active"
+length = 0.7
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_4daeq"]
+resource_name = "Destroyed"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_m8ed1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m5urb"]
+_data = {
+"Active": SubResource("Animation_fjhq0"),
+"Destroyed": SubResource("Animation_4daeq"),
+"RESET": SubResource("Animation_m8ed1")
+}
+
+[node name="coin" type="Area2D"]
+collision_layer = 16
+script = ExtResource("1_f710r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bgw4k")
+hframes = 12
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ifcy5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m5urb")
+}
+autoplay = "Active"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
